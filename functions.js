@@ -5,40 +5,46 @@ var map = L.map("map", {
   zoomControl: false, // Disable the default zoom controls.
 }); //add zoom level outside of square brackets
 
-// L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-//   attribution:
-//     '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-// }).addTo(map);
-
-
-// get color depending on population density value
+// get color depending on provincial geographical classification code 
 function getColor(d) {
-  return d > 1000
+  return d == 10 //Newfoundland and Labrador
     ? "#800026"
-    : d > 500
+    : d == 11 //Prince Edward Island
     ? "#BD0026"
-    : d > 200
-    ? "#E31A1C"
-    : d > 100
-    ? "#FC4E2A"
-    : d > 50
-    ? "#FD8D3C"
-    : d > 20
-    ? "#FEB24C"
-    : d > 10
-    ? "#FED976"
+    : d == 12 //Nova Scotial
+    ? "#ccebc5"
+    : d == 13 //New Brunswick
+    ? "#bc80bd"
+    : d == 24 //Quebec
+    ? "#d9d9d9"
+    : d == 35 //Ontario
+    ? "#fccde5"
+    : d == 46 //Manitoba
+    ? "#b3de69"
+    : d == 47 //Saskatchewan
+    ? "#fdb462"
+    : d == 48 //Alberta
+    ? "#80b1d3"
+    : d == 59 //British Columbia
+    ? "#fb8072"
+    : d == 60 //Yukon
+    ? "#bebada"
+    : d == 61 //Northwest Territories
+    ? "#ffffb3"
+    : d == 62 //Nunavut
+    ? "#E0D7FF"
     : "#FFEDA0";
 }
 
 //A styling function for our GeoJSON layer so that fillColor depends on feature.properties.density property. Also adds a dashed stroke
 function style(feature) {
   return {
-    fillColor: getColor(feature.properties.density),
+    fillColor: getColor(feature.properties.prov_code),
     weight: 2,
     opacity: 1,
-    color: "#f2cee3",
+    color: "#4A6AA3",
     dashArray: "2",
-    fillOpacity: 0.7,
+    fillOpacity: 0.8,
   };
 }
 
@@ -47,10 +53,10 @@ function highlightFeature(e) {
   var layer = e.target;
 
   layer.setStyle({
-    weight: 3,
-    color: "#6e1b4b",
+    weight: 2,
+    color: "#6050A8",
     dashArray: "",
-    fillOpacity: 0.7,
+    fillOpacity: 1,
   });
 
   layer.bringToFront();
@@ -94,40 +100,17 @@ info.onAdd = function (map) {
 // method that we will use to update the control based on feature properties passed
 info.update = function (props) {
   this._div.innerHTML =
-    "<h4>Ape like creature Population Density</h4>" +
+    "<h4>Random Facts around Canada</h4>" +
     (props
-      ? "<b>" +
+      ? "<strong>" +
         props.prov_name_en +
-        "</b><br />" +
-        props.density +
-        " Bigfoot / mi<sup>2</sup>"
+        "</strong><br /><br/>" +
+        props.fact
       : "Hover over a province");
 };
 
 info.addTo(map);
 
-//Creates a legend for the map
-var legend = L.control({ position: "topleft" });
-
-legend.onAdd = function (map) {
-  var div = L.DomUtil.create("div", "info legend"),
-    grades = [0, 10, 20, 50, 100, 200, 500, 1000],
-    labels = [];
-
-  // loop through our density intervals and generate a label with a colored square for each interval
-  for (var i = 0; i < grades.length; i++) {
-    div.innerHTML +=
-      '<i style="background:' +
-      getColor(grades[i] + 1) +
-      '"></i> ' +
-      grades[i] +
-      (grades[i + 1] ? "&ndash;" + grades[i + 1] + "<br>" : "+");
-  }
-
-  return div;
-};
-
-legend.addTo(map);
 
 //markers on the map
 
@@ -136,52 +119,38 @@ var //creating cariables for the map markers
   ottawa = L.marker([45.4215, -75.724098], { alt: "Ottawa" })
     .addTo(map)
     .bindPopup(
-      "Ottawa, ON <br>The city has many Sasquatch, which causes an exodus in the spring as they shed."
+      '<h4 class="cityName">Ottawa, ON</h4>The city has many <a href="https://allthatsinteresting.com/bigfoot-facts" target="_blank">Sasquatch</a>, which causes an exodus in the spring as they shed.'
     ),
   //Edmonton
   edmonton = L.marker([53.5461, -113.4937], { alt: "Edmonton" })
     .addTo(map)
-    .bindPopup("Edmonton, AB <br>Sasquatch hold many prominent positions in office."),
+    .bindPopup(
+      '<h4 class="cityName">Edmonton, AB</h4><a href="https://www.britannica.com/topic/Sasquatch" target="_blank">Sasquatch</a> hold many prominent positions in office.'
+    ),
   // Montreal
   montreal = L.marker([45.5019, -73.5674], { alt: "Montreal" })
     .addTo(map)
-    .bindPopup("Montreal, QC <br>Yeti enjoy the hills of the city, as well as the poutine.");
-//Halifax
-halifax = L.marker([44.8857, -63.1005], { alt: "Halifax" })
-  .addTo(map)
-  .bindPopup(
-    "Halifax, NA <br>Yeti from here have won several international compititions for singing sea shanties."
-  );
+    .bindPopup(
+      '<h4 class="cityName">Montreal, QC</h4><a href="https://www.livescience.com/25072-yeti-abominable-snowman.html" target="_blank">Yeti</a> enjoy the hills of the city, as well as the poutine.'
+    );
+  //Halifax
+  halifax = L.marker([44.8857, -63.1005], { alt: "Halifax" })
+    .addTo(map)
+    .bindPopup(
+      '<h4 class="cityName">Halifax, NS</h4><a href="https://www.natgeotv.com/ca/hunt-for-the-abominable-snowman/facts" target="_blank">Yeti</a> from here have won several international compititions for singing sea shanties.'
+    );
 
+
+// Layers control panel
 var sasquatches = L.layerGroup([ottawa, edmonton]);
 var yeti = L.layerGroup([montreal, halifax]);
+var allCryptids = L.layerGroup([ottawa, edmonton, montreal, halifax]);
 
 var overlayMaps = {
   Sasquatches: sasquatches,
   Yeti: yeti,
+  Both: allCryptids,
 };
 
 var layerControl = L.control.layers(overlayMaps).addTo(map);
 
-// Pop up where clicked
-
-
-// var popup = L.popup();
-
-function onMapClick(e) {
-  popup
-    .setContent("You clicked the map at " + features.properties.name + ".")
-    .openOn(map);
-}
-
-map.on("click", onMapClick);
-
-//Moves map controls outside of map
-$(document).ready(function () {
-  var newParent = document.getElementById("custom-map-controls");
-  var oldParent = document.getElementsByClassName("leaflet-top leaflet-right");
-
-  while (oldParent[0].childNodes.length > 0) {
-    newParent.appendChild(oldParent[0].childNodes[0]);
-  }
-});
