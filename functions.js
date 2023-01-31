@@ -136,21 +136,21 @@ var //creating cariables for the map markers
   ottawa = L.marker([45.4215, -75.724098], { alt: "Ottawa" })
     .addTo(map)
     .bindPopup(
-      "The city has many Sasquatch, which causes an exodus in the spring as they shed."
+      "Ottawa, ON <br>The city has many Sasquatch, which causes an exodus in the spring as they shed."
     ),
   //Edmonton
   edmonton = L.marker([53.5461, -113.4937], { alt: "Edmonton" })
     .addTo(map)
-    .bindPopup("Sasquatch hold many prominent positions in office."),
+    .bindPopup("Edmonton, AB <br>Sasquatch hold many prominent positions in office."),
   // Montreal
   montreal = L.marker([45.5019, -73.5674], { alt: "Montreal" })
     .addTo(map)
-    .bindPopup("Yeti enjoy the hills of the city, as well as the poutine.");
+    .bindPopup("Montreal, QC <br>Yeti enjoy the hills of the city, as well as the poutine.");
 //Halifax
 halifax = L.marker([44.8857, -63.1005], { alt: "Halifax" })
   .addTo(map)
   .bindPopup(
-    "Yeti from here have won several international compititions for singing sea shanties."
+    "Halifax, NA <br>Yeti from here have won several international compititions for singing sea shanties."
   );
 
 var sasquatches = L.layerGroup([ottawa, edmonton]);
