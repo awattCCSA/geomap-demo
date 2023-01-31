@@ -1,5 +1,4 @@
-/* ~~~~~~~~~~ Mobile CSS ~~~~~~~~~~~ */
-@media only screen and (max-width: 480px) {
+
   body {
     padding: 0;
     margin: 0;
@@ -14,8 +13,8 @@
     height: 100%;
   }
 
-  #mapWrapper {
-    width: 100vw;
+#mapWrapper {
+    width: 80vw;
     height: 70%;
     margin: 0 auto;
   }
@@ -43,11 +42,4 @@
     float: left;
     margin-right: 8px;
     opacity: 0.7;
-  }
-}
-/* ~~~~~~~~~~ Desktop CSS ~~~~~~~~~~~ */
-  #mapWrapper {
-    width: 80vw;
-    height: 70%;
-    margin: 0 auto;
   }
