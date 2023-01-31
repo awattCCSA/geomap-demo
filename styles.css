@@ -1,5 +1,5 @@
 /* ~~~~~~~~~~ Mobile CSS ~~~~~~~~~~~ */
-@media only screen and (min-width: 300px) {
+@media only screen and (max-width: 480px) {
   body {
     padding: 0;
     margin: 0;
@@ -45,11 +45,8 @@
     opacity: 0.7;
   }
 }
-
-@media only screen and (min-width: 600px) {
   #mapWrapper {
     width: 80vw;
     height: 70%;
     margin: 0 auto;
   }
-}
