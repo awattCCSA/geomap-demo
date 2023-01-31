@@ -1,6 +1,5 @@
 var map = L.map("map", {
   center: [68.24, -096.28],
-  zoomSnap: 0.25,
   zoom: 3,
   maxZoom: 10,
   zoomControl: false, // Disable the default zoom controls.
