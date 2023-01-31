@@ -1,10 +1,12 @@
 var map = L.map("map", {
   center: [68.24, -096.28],
-  zoomSnap: 0.25, 
+  zoomSnap: 0.25,
   zoom: 3,
-  maxZoom: 18,
+  maxZoom: 10,
   zoomControl: false, // Disable the default zoom controls.
 }); //add zoom level outside of square brackets
+
+
 
 // get color depending on provincial geographical classification code 
 function getColor(d) {
