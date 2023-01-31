@@ -1,6 +1,6 @@
 var map = L.map("map", {
   center: [68.24, -096.28],
-  zoomSnap: 0.25, //This changes the incremental scrolling rate of the zoom so it's smoother and easier to use
+  zoomSnap: 0.25, 
   zoom: 3,
   maxZoom: 18,
   zoomControl: false, // Disable the default zoom controls.
