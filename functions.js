@@ -6,6 +6,10 @@ var map = L.map("map", {
   zoomControl: false, // Disable the default zoom controls.
 }); //add zoom level outside of square brackets
 
+//removes leaflet attribution
+document.getElementsByClassName(
+  "leaflet-control-attribution"
+)[0].style.display = "none";
 
 // get color depending on provincial geographical classification code 
 function getColor(d) {
