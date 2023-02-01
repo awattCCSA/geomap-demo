@@ -6,7 +6,8 @@ var map = L.map("map", {
   zoomControl: false, // Disable the default zoom controls.
 }); //add zoom level outside of square brackets
 
-
+//remove mapp attribution 
+map.attributionControl.setPosition(...)
 
 // get color depending on provincial geographical classification code 
 function getColor(d) {
