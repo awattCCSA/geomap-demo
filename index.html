@@ -1,41 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- Tells mobile browsers to disable unwanted scaling of the page and sets it to actual size. -->
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <!-- Leaflet library CSS  -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-      crossorigin=""
-    />
-    <!-- Make sure you put this AFTER Leaflet's CSS -->
-    <script
-      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-      crossorigin=""
-    ></script>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Leaflet library CSS  -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+      <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
 
-    <title>Interactive Geo Map example</title>
-  </head>
-  <body>
-    <!-- Map container -->
-    <section id="mapWrapper">
-      <div id="custom-map-controls"></div>
-      <div id="map"></div>
-    </section>
 
-    <!-- Map of canada GeoJSON overlay -->
-    <script src="canadaProvinces.js"></script>
-
-    <!-- Javascript functions -->
-    <script src="functions.js"></script>
-  </body>
+  <title>Leafly map</title>
+</head>
+<body>
+<ul>
+  <li><a href="standalone/">Standalone Map</a></li>
+  <li><a href="pagedemo/">Demo in Basic Bootstrap page</a></li>
+</ul>
+</body>
 </html>
